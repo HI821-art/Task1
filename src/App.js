@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Biography from './components/Biography';
+import FamousPainting from './components/FamousPainting';
+import Gallery from './components/Gallery';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav style={{ padding: '20px', backgroundColor: '#f0f0f0' }}>
+          <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', gap: '20px' }}>
+            <li><Link to="/" style={{ textDecoration: 'none', color: '#007bff' }}>Biography</Link></li>
+            <li><Link to="/famous-painting" style={{ textDecoration: 'none', color: '#007bff' }}>Famous Painting</Link></li>
+            <li><Link to="/gallery" style={{ textDecoration: 'none', color: '#007bff' }}>Gallery</Link></li>
+          </ul>
+        </nav>
+        
+        <Routes>
+          <Route path="/" element={<Biography />} />
+          <Route path="/famous-painting" element={<FamousPainting />} />
+          <Route path="/gallery" element={<Gallery />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
